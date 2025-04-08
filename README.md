@@ -31,10 +31,17 @@
 
 <img width="399" alt="赞赏" src="https://github.com/user-attachments/assets/bdd2226b-6282-439d-be92-5311b6e9d29c">
 <br><br>
-<a href="#chromedriver-manager-zh">回到顶部</a>
+<a href="#tmdb-scraper-zh">回到顶部</a>
 <br>
 <br>
 <br>
 
 # TMDB Scraper <a name="tmdb-scraper-en"></a>
 <a href="#tmdb-scraper-zh">切换至中文</a>
+
+## Support
+If you found this helpful, consider buying me a coffee or giving it a ⭐️. Thanks for your support!
+
+<img width="399" alt="Support" src="https://github.com/user-attachments/assets/bdd2226b-6282-439d-be92-5311b6e9d29c">
+<br><br>
+<a href="#tmdb-scraper-zh">Back to Top</a>
