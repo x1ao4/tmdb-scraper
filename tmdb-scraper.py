@@ -53,6 +53,10 @@ def msg(key, **kwargs):
         'image_summary': {
             'zh': "共保存{count}张图片。",
             'en': "{count} backdrop(s) saved."
+        },
+        'season_not_found': {
+            'zh': "❌ 第{season}季不存在",
+            'en': "❌ Season {season} does not exist"
         }
     }
 
@@ -60,10 +64,19 @@ def msg(key, **kwargs):
     text = messages[key][lang]
     return text.format(**kwargs)
 
-def format_air_date(date_str):
+def format_air_date(date_str, language):
     try:
         dt = datetime.strptime(date_str, "%Y-%m-%d")
-        return f"{dt.year}/{dt.month}/{dt.day}"
+        format_mapping = {
+            'zh-CN': f"{dt.year}/{dt.month}/{dt.day}",
+            'en-US': f"{dt.month}/{dt.day}/{dt.year}",
+            'fr-FR': f"{dt.day:02d}/{dt.month:02d}/{dt.year}",
+            'ja-JP': f"{dt.year}/{dt.month:02d}/{dt.day}",
+            'de-DE': f"{dt.day:02d}.{dt.month:02d}.{dt.year}",
+            'zh-SG': f"{dt.day}/{dt.month}/{dt.year}",
+            'ko-KR': f"{dt.year}-{dt.month:02d}-{dt.day}"
+        }
+        return format_mapping.get(language, date_str)
     except:
         return date_str
 
@@ -82,9 +95,16 @@ def load_config():
 def get_season_data(api_key, tv_id, season_num, language):
     url = f"https://api.themoviedb.org/3/tv/{tv_id}/season/{season_num}"
     params = {"api_key": api_key, "language": language}
-    response = requests.get(url, params=params)
-    response.raise_for_status()
-    return response.json()
+    try:
+        response = requests.get(url, params=params)
+        response.raise_for_status()
+        return response.json()
+    except requests.exceptions.HTTPError as e:
+        if response.status_code == 404:
+            print(msg('season_not_found', season=season_num))
+            return None
+        else:
+            raise e
 
 def get_tv_show_name(api_key, tv_id, language):
     url = f"https://api.themoviedb.org/3/tv/{tv_id}"
@@ -93,7 +113,9 @@ def get_tv_show_name(api_key, tv_id, language):
     response.raise_for_status()
     return response.json().get('name', '未知剧名' if IS_CHINESE else 'Unknown Title')
 
-def save_episode_info(episodes, season_num, tv_show_name, total_stats):
+def save_episode_info(episodes, season_num, tv_show_name, total_stats, language):
+    if episodes is None:
+        return
     file_name = f"{tv_show_name} - S{season_num:02d}.txt"
     file_path = os.path.join(os.path.dirname(__file__), file_name)
 
@@ -107,7 +129,7 @@ def save_episode_info(episodes, season_num, tv_show_name, total_stats):
     has_update = False
 
     for ep in episodes:
-        line = f"{ep['episode_number']};{format_air_date(ep['air_date'])};{ep['runtime']};{ep['name']};{ep['overview']}".replace('\n', '') + '\n'
+        line = f"{ep['episode_number']};{format_air_date(ep['air_date'], language)};{ep['runtime']};{ep['name']};{ep['overview']}".replace('\n', '') + '\n'
         new_content = line.strip().split(';')
 
         found = False
@@ -138,6 +160,8 @@ def save_episode_info(episodes, season_num, tv_show_name, total_stats):
         print(msg('no_update', season=season_num))
 
 def download_episode_images(episodes, season_num, tv_show_name, total_stats):
+    if episodes is None:
+        return
     base_url = "https://image.tmdb.org/t/p/original"
     image_dir = os.path.join(os.path.dirname(__file__), f'{tv_show_name} - S{season_num:02d}')
     os.makedirs(image_dir, exist_ok=True)
@@ -169,6 +193,9 @@ def main():
 
         season_data = get_season_data(config['api_key'], config['tv_id'], season_num, config['language'])
 
+        if season_data is None:
+            continue
+
         episodes = []
         for ep in season_data.get('episodes', []):
             episodes.append({
@@ -180,7 +207,7 @@ def main():
                 'still_path': ep.get('still_path')
             })
 
-        save_episode_info(episodes, season_num, tv_show_name, total_stats)
+        save_episode_info(episodes, season_num, tv_show_name, total_stats, config['language'])
 
         if config['download_backdrops']:
             download_episode_images(episodes, season_num, tv_show_name, total_stats)
