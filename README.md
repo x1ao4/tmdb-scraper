@@ -72,10 +72,10 @@ Suppose you want to fetch episode data for [Season 1](https://www.themoviedb.org
 ```
 Each line represents one episode with the format: `Episode Number;Air Date;Runtime;Name;Episode Overview`.
 
-If you've enabled episode backdrop download, you'll also get a folder named `Black Mirror - S01` containing images named `1.jpg`, `2.jpg`, and `3.jpg`, which are the default stills for episodes 1, 2, and 3 (if available).
+If you've enabled episode backdrop download, you'll also get a folder named `Black Mirror - S01` containing images named `1.jpg`, `2.jpg`, and `3.jpg`, which are the default backdrops for episodes 1, 2, and 3 (if available).
 
 ## Requirements
-- Python 3.0 or higher installed.
+- Python 3.9 or higher installed.
 - All required dependencies installed using `pip3 install -r requirements.txt`.
 - A valid TMDB API key. (available for free in your TMDB account settings)
 
@@ -83,17 +83,17 @@ If you've enabled episode backdrop download, you'll also get a folder named `Bla
 Before using TMDBS, please configure the `config.ini` file according to the following tips (example).
 ```
 [TMDB]
-# Your TMDB API key. You can find it in your TMDB account settings.
+# Your TMDB API key, you can find it in your TMDB account settings
 API_KEY = YOUR_TMDB_API_KEY
-# TMDB ID of the target TV show. Numeric ID at the end of the show's TMDB URL.
+# TMDB ID of the target TV show, numeric ID at the end of the show's TMDB URL
 TV_ID = 42009
-# Target seasons. Use commas to separate multiple seasons.
+# Target seasons, use commas to separate multiple seasons
 SEASONS = 1,2,3
 
 [OPTIONS]
-# Whether to download episode backdrops. TRUE = download, FALSE = don't download.
+# Whether to download episode backdrops, TRUE for yes, FALSE for no
 DOWNLOAD_BACKDROPS = TRUE
-# The language code for the data, e.g., zh-CN for Chinese, en-US for English. Follow TMDB language codes.
+# The language code for the data, e.g., zh-CN for Chinese, en-US for English, follow TMDB language codes
 LANGUAGE = zh-CN
 ```
 
