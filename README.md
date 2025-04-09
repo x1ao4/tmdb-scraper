@@ -31,7 +31,7 @@ TV_ID = 42009
 SEASONS = 1,2,3
 
 [OPTIONS]
-# 是否下载剧集图片（剧照），TRUE 为下载，FALSE 为不下载
+# 是否下载剧集图片（剧照），TRUE 表示下载，FALSE 表示不下载
 DOWNLOAD_BACKDROPS = TRUE
 # 你要获取的数据的语言，如 zh-CN 表示汉语，en-US 表示英语，以 TMDB 使用的语言代码为准
 LANGUAGE = zh-CN
@@ -47,6 +47,7 @@ LANGUAGE = zh-CN
 - 使用脚本时，请确保你的网络连接正常，并且 TMDB 网站可以正常访问。
 - 请确保你提供了有效的 TMDB API 密钥，否则将无法获取数据。
 - 若剧集信息发生了变更，重新运行脚本将使用新的剧集信息覆盖旧的剧集信息。
+- Windows 用户运行 TMDBS 后，若没有任何反应，请将 `tmdb-scraper.bat` 中的 `python3` 替换为 `python` 再运行。
 
 ## 赞赏
 如果你觉得这个项目对你有用，可以考虑请我喝杯咖啡或者给我一个⭐️。谢谢你的支持！
@@ -107,6 +108,7 @@ LANGUAGE = zh-CN
 - Make sure you have a stable internet connection and that the TMDB website is accessible.
 - A valid TMDB API key is required; otherwise, the script won't be able to fetch data.
 - If episode data changes, rerunning the script will overwrite the old data with the latest.
+- If TMDBS doesn't respond on Windows, replace `python3` with `python` in the `tmdb-scraper.bat` file and try again.
 
 ## Support
 If you found this helpful, consider buying me a coffee or giving it a ⭐️. Thanks for your support!
