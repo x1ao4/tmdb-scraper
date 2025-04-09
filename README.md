@@ -47,7 +47,7 @@ LANGUAGE = zh-CN
 - 使用脚本时，请确保你的网络连接正常，并且 TMDB 网站可以正常访问。
 - 请确保你提供了有效的 TMDB API 密钥，否则将无法获取数据。
 - 若剧集信息发生了变更，重新运行脚本将使用新的剧集信息覆盖旧的剧集信息。
-- Windows 用户运行 TMDBS 后，若没有任何反应，请将 `tmdb-scraper.bat` 中的 `python3` 替换为 `python` 再运行。
+- 若 TMDBS 在 Windows 上没有反应，请将 `tmdb-scraper.bat` 中的 `python3` 替换为 `python` 再运行。
 
 ## 赞赏
 如果你觉得这个项目对你有用，可以考虑请我喝杯咖啡或者给我一个⭐️。谢谢你的支持！
