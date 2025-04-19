@@ -20,7 +20,7 @@
 - 有可用的 TMDB API。（可在 TMDB 账号设置中免费申请）
 
 ## 配置说明
-在使用 TMDBS 前，请先参考以下提示（示例）对 `config.ini` 进行配置。
+运行前，请先参考以下提示（示例）对 `config.ini` 进行配置。
 ```
 [TMDB]
 # 你的 TMDB API 密钥，请在你的 TMDB 账号设置中查看 API 密钥
@@ -47,12 +47,12 @@ LANGUAGE = zh-CN
 - 使用脚本时，请确保你的网络连接正常，并且 TMDB 网站可以正常访问。
 - 请确保你提供了有效的 TMDB API 密钥，否则将无法获取数据。
 - 若剧集信息发生了变更，重新运行脚本将使用新的剧集信息覆盖旧的剧集信息。
-- 若 TMDBS 在 Windows 上没有反应，请将 `tmdb-scraper.bat` 中的 `python3` 替换为 `python` 再运行。
+- 若脚本在 Windows 上运行后没有反应，请将 `tmdb-scraper.bat` 中的 `python3` 替换为 `python` 再运行。
 
 ## 赞赏
 如果你觉得这个项目对你有用，可以考虑请我喝杯咖啡或者给我一个⭐️。谢谢你的支持！
 
-<img width="399" alt="赞赏" src="https://github.com/user-attachments/assets/bdd2226b-6282-439d-be92-5311b6e9d29c">
+<img width="383" alt="赞赏" src="https://github.com/user-attachments/assets/bdd2226b-6282-439d-be92-5311b6e9d29c">
 <br><br>
 <a href="#tmdb-scraper-zh">回到顶部</a>
 <br>
@@ -81,7 +81,7 @@ If you've enabled episode backdrop download, you'll also get a folder named `Bla
 - A valid TMDB API key. (available for free in your TMDB account settings)
 
 ## Configuration
-Before using TMDBS, please configure the `config.ini` file according to the following tips (example).
+Before running, please configure the `config.ini` file according to the following tips (example).
 ```
 [TMDB]
 # Your TMDB API key, you can find it in your TMDB account settings
@@ -108,11 +108,11 @@ LANGUAGE = zh-CN
 - Make sure you have a stable internet connection and that the TMDB website is accessible.
 - A valid TMDB API key is required; otherwise, the script won't be able to fetch data.
 - If episode data changes, rerunning the script will overwrite the old data with the latest.
-- If TMDBS doesn't respond on Windows, replace `python3` with `python` in the `tmdb-scraper.bat` file and try again.
+- If it doesn't respond on Windows, replace `python3` with `python` in `tmdb-scraper.bat`.
 
 ## Support
 If you found this helpful, consider buying me a coffee or giving it a ⭐️. Thanks for your support!
 
-<img width="399" alt="Support" src="https://github.com/user-attachments/assets/bdd2226b-6282-439d-be92-5311b6e9d29c">
+<img width="383" alt="Support" src="https://github.com/user-attachments/assets/bdd2226b-6282-439d-be92-5311b6e9d29c">
 <br><br>
 <a href="#tmdb-scraper-zh">Back to Top</a>
